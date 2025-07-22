@@ -1,12 +1,18 @@
 import express from "express";
+import authRoutes from "./routes/auth.routes.js";
+import dotenv from "dotenv";
+import connectMongoDB from "./db/connectMongoDB.js";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.get("/", (req,res) => {
-    res.send("Server is Ready");
-})
+dotenv.config();
+console.log(process.env.MONGO_URI);
 
-app.listen(PORT,() => {
-    console.log(`Server running on : http://localhost:${PORT}`);
-})
+
+app.use("/api/auth", authRoutes);
+
+app.listen(PORT, () => {
+    console.log(`Server is running on : http://localhost:${PORT}`);
+    connectMongoDB();
+});
