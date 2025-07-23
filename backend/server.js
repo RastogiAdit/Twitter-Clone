@@ -7,8 +7,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 dotenv.config();
-console.log(process.env.MONGO_URI);
+// console.log(process.env.MONGO_URI);
 
+app.use(express.json()); //to parse req.body
 
 app.use("/api/auth", authRoutes);
 
