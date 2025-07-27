@@ -6,12 +6,13 @@ import {v2 as cloudinary} from "cloudinary"
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import connectMongoDB from "./db/connectMongoDB.js";
+import postRoutes from "./routes/post.routes.js"
 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-dotenv.config();
+dotenv.config({ quiet: true });
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -27,6 +28,7 @@ app.use(cookieParser()); //to parse cookies
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/posts", postRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on : http://localhost:${PORT}`);
