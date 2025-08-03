@@ -23,7 +23,8 @@ cloudinary.config({
 
 // console.log(process.env.MONGO_URI);
 
-app.use(express.json()); //to parse req.body
+app.use(express.json({limit:"5mb"})); //to parse req.body 
+// //keep limit low to prevent DoS attack
 app.use(express.urlencoded({ extended: true })); //to parse urlencoded data
 app.use(cookieParser()); //to parse cookies
 
