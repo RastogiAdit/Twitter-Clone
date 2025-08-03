@@ -99,21 +99,21 @@ export const updateUser = async (req, res) => {
 
         //checking is username exists or not
         const existingUser = await User.findOne({ username });
-        if(existingUser && existingUser._id.toString() !== userId.toString()) {
-            return res.status(400).json({error: "Username is already taken"});
-        }
+        // if(existingUser && existingUser._id.toString() !== userId.toString()) {
+        //     return res.status(400).json({error: "Username is already taken"});
+        // }
 
         //check email is valid and exists or not
         const existingEmail = await User.findOne({ email });
-        if(existingEmail) {
-            return res.status(400).json({error: "Email is already taken"});
-        }
-        if(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if(!emailRegex.test(email)) {
-                return res.status(400).json({error: "Invalid email format"});
-            }
-        }
+        // if(existingEmail) {
+        //     return res.status(400).json({error: "Email is already taken"});
+        // }
+        // if(email) {
+        //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        //     if(!emailRegex.test(email)) {
+        //         return res.status(400).json({error: "Invalid email format"});
+        //     }
+        // }
         
 
 
